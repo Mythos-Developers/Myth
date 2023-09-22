@@ -1,6 +1,7 @@
 package net.minecraft.text;
 
 import net.minecraft.text.component.TextComponent;
+import net.mythos.text.MythicalText;
 
 import java.util.List;
 
@@ -25,9 +26,10 @@ public class TieInText extends MutableText {
 		return this.siblings;
 	}
 
-	// TODO I don't feel like fixing this right now bc i'm lazy
-	public List<Text> setStyle(Style style) {
-		return null;
+	// To-Do: This throws an error for *no* reason whatsoever. FIX IT PLEASE I'M BEGGING YOU
+	public TieInText setStyle(Style style) {
+		this.style = style;
+		return this;
 	}
 
 }
