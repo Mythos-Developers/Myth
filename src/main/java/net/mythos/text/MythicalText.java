@@ -7,6 +7,10 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
+/**
+ * {@code MythicalText} is a simple class that lets you
+ */
+
 public class MythicalText extends TieInText {
 
 	private Style style;
@@ -69,6 +73,10 @@ public class MythicalText extends TieInText {
 	public MythicalText font(Identifier font) {
 		this.style = style.withFont(font);
 		return this;
+	}
+
+	public static MythicalText literal(String text) {
+		return (MythicalText) Text.literal(text);
 	}
 
 }
