@@ -1,17 +1,12 @@
 package net.mythos;
 
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.GameMode;
 import net.mythos.text.MythicalStyle;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.quiltmc.qsl.command.api.CommandRegistrationCallback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Objects;
 
 import static net.minecraft.server.command.CommandManager.literal;
 
@@ -28,8 +23,9 @@ public class Myth implements ModInitializer {
 		CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> dispatcher.register(literal("foo")
 				.executes(context -> {
 
-					context.getSource().sendSystemMessage(Text.literal("Hello World").setStyle(new MythicalStyle().color(6520488)));
-
+					LOGGER.debug("The command started running");
+					context.getSource().sendSystemMessage(Text.literal("Hello World").setStyle(new MythicalStyle().color(0x825683).bold(true).build()));
+					LOGGER.debug("The command ran successfully");
 					return 1;
 
 				})));
