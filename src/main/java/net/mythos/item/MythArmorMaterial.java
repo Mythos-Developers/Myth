@@ -44,6 +44,17 @@ public class MythArmorMaterial implements ArmorMaterial {
 		this.knockbackResistance = knockbackResistance;
 	}
 
+	public MythArmorMaterial(int[] durability, int[] protection, int enchantability, SoundEvent equipSound, String name, float toughness, float knockbackResistance) {
+		durabilityValues = durability;
+		protectionValues = protection;
+		this.enchantability = enchantability;
+		this.equipSound = equipSound;
+		this.repairIngredient = null;
+		this.name = name;
+		this.toughness = toughness;
+		this.knockbackResistance = knockbackResistance;
+	}
+
 	@Override
 	public int getDurability(ArmorItem.ArmorSlot slot) {
 		return durabilityValues[slot.getEquipmentSlot().getEntitySlotId()] * 40;
