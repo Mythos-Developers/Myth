@@ -1,5 +1,6 @@
 package net.mythos;
 
+import net.mythos.command.MythosCommand;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ public class Myth implements ModInitializer {
 	public void onInitialize(ModContainer mod) {
 
 		LOGGER.info("Successfully loaded and initialized Myth.");
+		MythosCommand.register();
 
 	}
 
