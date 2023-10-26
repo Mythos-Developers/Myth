@@ -1,5 +1,8 @@
 package net.mythos;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonWriter;
 import net.mythos.command.MythosCommand;
 import net.mythos.config.CfgFileEditor;
 import org.quiltmc.loader.api.ModContainer;
@@ -9,7 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Arrays;
 
 public class Myth implements ModInitializer {
@@ -23,23 +28,27 @@ public class Myth implements ModInitializer {
 
 		try {
 
-			File configDir = new File(QuiltLoader.getConfigDir().toString());
-			File mythDir = new File(QuiltLoader.getConfigDir().toString() + "/myth");
-			File configFile = new File(QuiltLoader.getConfigDir().toString() + "/myth/myth.cfg");
+			LOGGER.info("Start");
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			File dir = new File(QuiltLoader.getConfigDir() + "/mythos");
+			File config = new File(QuiltLoader.getConfigDir() + "/mythos/myth.json");
+			dir.mkdir();
+			config.createNewFile();
+//			FileWriter writer = new FileWriter(QuiltLoader.getConfigDir() + "/mythos/myth.json");
+			FileWriter writer = new FileWriter(config);
 
-			if(!mythDir.exists()) {
-				CfgFileEditor.create();
-				CfgFileEditor.write();
-			}
-
-			LOGGER.info(String.valueOf(configFile.getTotalSpace()));
+			LOGGER.info("Before {}", config.length());
+			writer.write("Hello World");
+			writer.flush();
+			writer.close();
+			LOGGER.info("After {}", config.length());
 
 		} catch(IOException error) {
-			LOGGER.error("Could not load config file for Myth");
+			LOGGER.error("Something went wrong.");
+			LOGGER.error(error.getMessage());
 		}
 
 		LOGGER.info("Successfully loaded and initialized Myth.");
-		LOGGER.info(QuiltLoader.getConfigDir().toString());
 		MythosCommand.register();
 
 	}
