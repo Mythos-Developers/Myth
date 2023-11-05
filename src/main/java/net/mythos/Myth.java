@@ -2,9 +2,8 @@ package net.mythos;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonWriter;
 import net.mythos.command.MythosCommand;
-import net.mythos.config.CfgFileEditor;
+import net.mythos.text.MythicalStyle;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.loader.api.QuiltLoader;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
@@ -14,8 +13,6 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
-import java.util.Arrays;
 
 public class Myth implements ModInitializer {
 
@@ -34,11 +31,10 @@ public class Myth implements ModInitializer {
 			File config = new File(QuiltLoader.getConfigDir() + "/mythos/myth.json");
 			dir.mkdir();
 			config.createNewFile();
-//			FileWriter writer = new FileWriter(QuiltLoader.getConfigDir() + "/mythos/myth.json");
 			FileWriter writer = new FileWriter(config);
 
 			LOGGER.info("Before {}", config.length());
-			writer.write("Hello World");
+			writer.write(gson.toJson(new MythicalStyle()));
 			writer.flush();
 			writer.close();
 			LOGGER.info("After {}", config.length());
