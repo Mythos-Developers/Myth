@@ -3,6 +3,7 @@ package net.mythos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.mythos.command.MythosCommand;
+import net.mythos.config.MythosConfig;
 import net.mythos.text.MythicalStyle;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -23,6 +24,7 @@ public class Myth implements ModInitializer {
 	@Override
 	public void onInitialize(ModContainer mod) {
 
+		/*
 		try {
 
 			LOGGER.info("Start");
@@ -43,6 +45,10 @@ public class Myth implements ModInitializer {
 			LOGGER.error("Something went wrong.");
 			LOGGER.error(error.getMessage());
 		}
+		*/
+
+		MythosConfig config = MythosConfig.create().addBoolean("test", true);
+		LOGGER.info("Value: " + config.getValue("test"));
 
 		LOGGER.info("Successfully loaded and initialized Myth.");
 		MythosCommand.register();
