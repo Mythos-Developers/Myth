@@ -6,8 +6,8 @@ public class MultiblockStructure {
 
 	private Block[][][] structure;
 
-	public MultiblockStructure(int x, int y, int z) {
-		structure = new Block[x][y][z];
+	public MultiblockStructure(int xLength, int yLength, int zLength) {
+		structure = new Block[xLength][yLength][zLength];
 	}
 
 }
