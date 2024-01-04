@@ -38,7 +38,7 @@ public class MythicalStyle extends TIStyle {
 	}
 
 	/**
-	 * A method that takes in a decimal color value and this.style =s
+	 * A method that takes in a decimal color value and this.style =
 	 * a Style with that text color.
 	 * <br>
 	 * @param color The decimal value of a text color.

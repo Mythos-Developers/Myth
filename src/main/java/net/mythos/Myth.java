@@ -2,8 +2,13 @@ package net.mythos;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.text.Style;
+import net.minecraft.util.Identifier;
 import net.mythos.command.MythosCommand;
 import net.mythos.config.MythosConfig;
+import net.mythos.item.SeparatePerspectiveItem;
 import net.mythos.text.MythicalStyle;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.loader.api.QuiltLoader;
@@ -52,6 +57,10 @@ public class Myth implements ModInitializer {
 
 		LOGGER.info("Successfully loaded and initialized Myth.");
 		MythosCommand.register();
+
+		Registry.register(Registries.ITEM, new Identifier(ID, "test"), new SeparatePerspectiveItem(ID, "test"));
+
+		Style.EMPTY.withColor(0xFFFFFF);
 
 	}
 
