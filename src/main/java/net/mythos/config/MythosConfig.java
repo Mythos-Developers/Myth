@@ -1,19 +1,10 @@
 package net.mythos.config;
 
-import com.ibm.icu.impl.Pair;
-import net.mythos.Myth;
-import org.quiltmc.loader.api.QuiltLoader;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectInputFilter;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MythosConfig {
 
-	private HashMap<String, ConfigParam> registry = new HashMap<>();
+	private final HashMap<String, ConfigParam> registry = new HashMap<>();
 
 	public MythosConfig() {
 	}
@@ -34,6 +25,14 @@ public class MythosConfig {
 		registry.put(
 			key,
 			new ConfigParam<Boolean>(defaultValue)
+		);
+		return this;
+	}
+
+	public MythosConfig addInt(String key, int defaultValue) {
+		registry.put(
+			key,
+			new ConfigParam<Integer>(defaultValue)
 		);
 		return this;
 	}
